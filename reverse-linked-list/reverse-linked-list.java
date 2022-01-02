@@ -10,22 +10,15 @@
  */
 class Solution {
     public ListNode reverseList(ListNode head) {
-        if(head==null){
-            return head;
+        ListNode currentNode = head;
+        ListNode prevNode = null;
+        ListNode nextNode = null;
+        while(currentNode!=null){
+            nextNode = currentNode.next;
+            currentNode.next = prevNode;
+            prevNode = currentNode;
+            currentNode = nextNode;
         }
-        if(head.next==null){
-            return head;
-        }
-        ListNode rev = reverseList(head.next);
-        head.next = null;
-        addToLast(rev, head);
-        return rev;
-    }
-    
-    private void addToLast(ListNode rev, ListNode head){
-        while(rev.next!=null){
-            rev = rev.next;
-        }
-        rev.next = head;
+        return prevNode;
     }
 }
