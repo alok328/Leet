@@ -11,7 +11,7 @@ class Solution {
             return;
         }
         for(int i=idx; i<s.length(); i++){
-            if(isPalindrome(s.substring(idx, i+1))){
+            if(isPalindrome(s, idx, i)){
                 cur.add(s.substring(idx, i+1));
                 solve(i+1, s, ans, cur);
                 cur.remove(cur.size()-1);
@@ -19,9 +19,7 @@ class Solution {
         }
     }
     
-    private boolean isPalindrome(String s){
-        int l = 0;
-        int r = s.length()-1;
+    private boolean isPalindrome(String s, int l, int r){
         while(l<r){
             if(s.charAt(l)!=s.charAt(r)){
                 return false;
