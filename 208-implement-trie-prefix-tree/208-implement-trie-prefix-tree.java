@@ -26,29 +26,25 @@ class Trie {
     }
     
     public boolean search(String word) {
-        TrieNode temp = root;
-        for(int i=0; i<word.length(); i++){
-            char c = word.charAt(i);
-            int idx = c - 'a';
-            if(temp.children[idx]==null){
-                return false;
-            }
-            temp = temp.children[idx];
-        }
-        return temp.endsHere;
+        TrieNode node = findInTrie(word);
+        return node != null && node.endsHere;
     }
     
     public boolean startsWith(String prefix) {
+        return findInTrie(prefix) != null;
+    }
+    
+    private TrieNode findInTrie(String s) {
         TrieNode temp = root;
-        for(int i=0; i<prefix.length(); i++){
-            char c = prefix.charAt(i);
+        for (int i = 0; i < s.length(); i++) {
+            char c = s.charAt(i);
             int idx = c - 'a';
-            if(temp.children[idx]==null){
-                return false;
+            if (temp.children[idx] == null) {
+                return null;
             }
             temp = temp.children[idx];
         }
-        return true;
+        return temp;
     }
 }
 
