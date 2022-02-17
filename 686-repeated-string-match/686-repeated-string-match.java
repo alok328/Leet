@@ -3,7 +3,7 @@ class Solution {
         int count = 0;
         String temp = "";
         while(temp.length()<b.length()){
-            temp+=a;
+            temp=temp+a; //comparing time (412ms previously)
             count++;
         }
         if(temp.contains(b)) return count;
