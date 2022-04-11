@@ -3,6 +3,7 @@ class Solution {
         List<List<Integer>> ans = new ArrayList<>();
         int m = grid.length;
         int n = grid[0].length;
+        k %= (m * n);
         for(int i=0; i<k; i++){
             for(int j=0; j<m; j++){
                 for(int l=0; l<n; l++){
