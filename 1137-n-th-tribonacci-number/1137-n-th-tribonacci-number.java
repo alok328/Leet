@@ -1,18 +1,15 @@
 class Solution {
-    Integer[] memo = new Integer[38];
     public int tribonacci(int n) {
-        if(memo[n]!=null) {
-            return memo[n];
+        if(n==0 || n==1) {
+            return n;
         }
-        if(n==0) {
-            memo[n] = 0;
-            return 0;
+        int[] dp = new int[n+1];
+        dp[0] = 0;
+        dp[1] = 1;
+        dp[2] = 1;
+        for(int i=3; i<=n; i++) {
+            dp[i] = dp[i-1] + dp[i-2] + dp[i-3];
         }
-        if(n==1 || n==2) {
-            memo[n] = 1;
-            return 1;
-        }
-        memo[n] = tribonacci(n-1) + tribonacci(n-2) + tribonacci(n-3);
-        return memo[n];
+        return dp[n];
     }
 }
